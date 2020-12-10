@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import TopRated from "./TopRated";
+import NavBar from "./NavBar";
+import Popular from "./Popular";
+import React, { useState } from "react";
+import "./style.css";
+import Moviethriler from "./Moviethriler";
 function App() {
+  const [pages, setpages] = useState(1);
+  const [rated, setrated] = useState();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <NavBar />
+      <div className="App">
+        <Switch>
+          <Route path="/TopRated">
+            <TopRated
+              pages={pages}
+              rated={rated}
+              setpages={setpages}
+              setrated={setrated}
+            />
+          </Route>
+          <Route path="/Popular">
+            <Popular
+              pages={pages}
+              rated={rated}
+              setpages={setpages}
+              setrated={setrated}
+            />
+          </Route>
+          <Route>
+            <Moviethriler />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
