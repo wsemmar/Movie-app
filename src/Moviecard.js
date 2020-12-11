@@ -20,11 +20,13 @@ const Moviecard = ({ elem }) => {
   return (
     <div>
       <Card style={{ width: "18rem" }}>
-        <Card.Img
-          onClick={() => history.push(`/Thriler`, { vid })}
-          variant="top"
-          src={`https://image.tmdb.org/t/p/w500/${elem.poster_path}`}
-        />
+        {vid && (
+          <Card.Img
+            onClick={() => history.push(`/Thriler`, { vid })}
+            variant="top"
+            src={`https://image.tmdb.org/t/p/w500/${elem.poster_path}`}
+          />
+        )}
         <Card.Body>
           <Card.Title>{elem.title}</Card.Title>
         </Card.Body>

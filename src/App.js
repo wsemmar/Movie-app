@@ -30,9 +30,7 @@ function App() {
               setrated={setrated}
             />
           </Route>
-          <Route>
-            <Moviethriler />
-          </Route>
+          <Route>{rated && <Moviethriler />}</Route>
         </Switch>
       </div>
     </Router>
